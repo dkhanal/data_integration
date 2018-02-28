@@ -1,21 +1,5 @@
-variable "client_platform" {
-  default = "windows"
-}
-
-variable "user_dir" {
-  type = "map"
-  default = {
-    "windows" = "%USERPROFILE%"
-    "linux" = "$HOME"
-  }
-}
-
-variable "ssh_profile" {
-  type = "map"
-  default = {
-    "username" = "deepak"
-    "private_key" = "${var.user_dir[var.client_platform]}/DeepakKhanalAWSKey.pem"
-  }  
+variable "user_home" {
+  default                 = "/home/deepak"
 }
 
 variable "region" {
@@ -32,8 +16,8 @@ resource "aws_instance" "example" {
   instance_type         = "t2.micro"
 
   connection {
-    user = "ubuntu"
-    private_key = "${var.ssh_profile[var.client_platform]}"
+    "user" = "deepak"
+    "private_key" = "${var.user_home}/DeepakKhanalAWSKey.pem"
   }
 
   provisioner "remote-exec" {
@@ -41,5 +25,5 @@ resource "aws_instance" "example" {
       "git clone https://github.com/dkhanal/data_integration.git ~/data_integration",
       "~/data_integration/infrastructure/scripts/installer-docker.sh"
     ]
-  }  
+  }
 }
