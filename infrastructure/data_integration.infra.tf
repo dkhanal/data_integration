@@ -18,9 +18,8 @@ resource "aws_instance" "example" {
 
   connection {
     "user" = "ubuntu"
-    "private_key" = "${file(var.user_home/DeepakKhanalAWSKey.pem")}
+    "private_key" = "${file("${var.user_home}/DeepakKhanalAWSKey.pem")}"
   }
-private_key = "${file("ssh/insecure-deployer")}"
   provisioner "remote-exec" {
     inline = [
       "git clone https://github.com/dkhanal/data_integration.git ~/data_integration",
