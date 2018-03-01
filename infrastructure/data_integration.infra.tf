@@ -12,13 +12,15 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami                   = "ami-6e1a0117"
-  instance_type         = "t2.micro"
-  key_name              = "DeepakKhanal"
+  ami                     = "ami-6e1a0117"
+  instance_type           = "t2.micro"
+  key_name                = "DeepakKhanal"
 
   connection {
-    "user" = "ubuntu"
-    "private_key" = "${file("${var.user_home}/DeepakKhanalAWSKey.pem")}"
+    "type"                = "ssh"
+    "user"                = "ubuntu"
+    "private_key"         = "${file("${var.user_home}/DeepakKhanalAWSKey.pem")}"
+    "timeout"             = "5m"
   }
   provisioner "remote-exec" {
     inline = [
