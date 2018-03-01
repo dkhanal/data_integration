@@ -39,6 +39,7 @@ resource "aws_instance" "example" {
       "git clone https://github.com/dkhanal/data_integration.git ~/data_integration",
       "chmod +x ~/data_integration/infrastructure/scripts/install_docker.sh",
       "~/data_integration/infrastructure/scripts/install_docker.sh"
+      "~/data_integration/infrastructure/scripts/install_kafka.sh"
     ]
   }
 }
