@@ -20,7 +20,7 @@ resource "aws_instance" "example" {
     "type"                = "ssh"
     "user"                = "ubuntu"
     "private_key"         = "${file("${var.user_home}/DeepakKhanalAWSKey.pem")}"
-    "timeout"             = "5m"
+    "timeout"             = "10m"
   }
   provisioner "remote-exec" {
     inline = [
