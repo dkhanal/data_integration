@@ -2,6 +2,16 @@ variable "user_home" {
   default                 = "/home/deepak"
 }
 
+variable "instance_key_name" {
+  default                 = "DeepakKhanal"
+}
+variable "seurity_group" {
+  default                 = "DeepakResearchSG"
+}
+variable "private_key_file" {
+  default                 = "DeepakKhanalAWSKey.pem"  
+}
+
 variable "region" {
   default                 = "us-west-2"
 }
@@ -14,15 +24,16 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami                     = "ami-6e1a0117"
   instance_type           = "t2.micro"
-  key_name                = "DeepakKhanal"
-  security_groups         = ["DeepakResearchSG"]
+  key_name                = "${instance_key_name}"
+  security_groups         = ["${var.seurity_group}"]
       
   connection {
     "type"                = "ssh"
     "user"                = "ubuntu"
-    "private_key"         = "${file("${var.user_home}/DeepakKhanalAWSKey.pem")}"
+    "private_key"         = "${file("${var.user_home}/${var.private_key_file})}"
     "timeout"             = "10m"
   }
+
   provisioner "remote-exec" {
     inline = [
       "git clone https://github.com/dkhanal/data_integration.git ~/data_integration",
