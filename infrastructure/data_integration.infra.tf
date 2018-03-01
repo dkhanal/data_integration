@@ -24,13 +24,13 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami                     = "ami-6e1a0117"
   instance_type           = "t2.micro"
-  key_name                = "${instance_key_name}"
+  key_name                = "${var.instance_key_name}"
   security_groups         = ["${var.seurity_group}"]
       
   connection {
     "type"                = "ssh"
     "user"                = "ubuntu"
-    "private_key"         = "${file("${var.user_home}/${var.private_key_file})}"
+    "private_key"         = "${file("${var.user_home}/${var.private_key_file}")}"
     "timeout"             = "10m"
   }
 
