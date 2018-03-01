@@ -26,7 +26,7 @@ resource "aws_instance" "example" {
   provisioner "remote-exec" {
     inline = [
       "git clone https://github.com/dkhanal/data_integration.git ~/data_integration",
-      "~/data_integration/infrastructure/scripts/installer-docker.sh"
+      "~/data_integration/infrastructure/scripts/install_docker.sh"
     ]
   }
 }
