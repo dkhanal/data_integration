@@ -8,7 +8,6 @@ rm kafka_*
 wget http://apache.mirror.colo-serv.net/kafka/1.0.0/kafka_2.11-1.0.0.tgz
 sudo rm -r /opt/Kafka
 sudo mkdir /opt/Kafka
-cd /opt/Kafka
 sudo tar -xvf kafka_2.11-1.0.0.tgz -C /opt/Kafka/
 sudo nohup /opt/Kafka/kafka_2.11-1.0.0/bin/kafka-server-start.sh /opt/Kafka/kafka_2.11-1.0.0/config/server.properties /tmp/kafka.log 2>&1 &
 sudo /opt/Kafka/kafka_2.11-1.0.0/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1  --partitions 1 --topic testing
