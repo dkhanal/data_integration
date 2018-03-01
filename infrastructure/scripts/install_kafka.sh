@@ -5,6 +5,8 @@ sudo java -version
 sudo apt-get install zookeeperd -y
 netstat -ant | grep :2181
 wget http://apache.mirror.colo-serv.net/kafka/1.0.0/kafka_2.11-1.0.0.tgz
+rm kafka_*
+sudo rm -r /opt/Kafka
 sudo mkdir /opt/Kafka
 cd /opt/Kafka
 sudo tar -xvf kafka_2.11-1.0.0.tgz -C /opt/Kafka/
