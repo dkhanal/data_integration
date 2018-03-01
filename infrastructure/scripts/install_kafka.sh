@@ -2,9 +2,9 @@ sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java8-installer -y
 sudo java -version
-sudo apt-get install zookeeperd
+sudo apt-get install zookeeperd -y
 netstat -ant | grep :2181
-wget https://www.apache.org/dyn/closer.cgi?path=/kafka/1.0.0/kafka-1.0.0-src.tgz
+wget http://mirror.dsrg.utoronto.ca/apache/kafka/1.0.0/kafka-1.0.0-src.tgz
 sudo mkdir /opt/Kafka
 cd /opt/Kafka
 sudo tar -xvf kafka_2.10-0.10.0.1.tgz -C /opt/Kafka/
